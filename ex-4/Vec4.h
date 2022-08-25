@@ -9,8 +9,8 @@ public:
 	friend Vec4 operator * (Vec4 multiplier, double multiplicand);
 	friend Vec4 operator * (double multiplier, Vec4 multiplicand);
 	Vec4 operator / (double divisor);
-	//bool operator == (Vec4 secondOne);
 	friend bool operator == (const Vec4 leftOne, const Vec4 rightOne);
+	friend bool operator != (const Vec4 leftOne, const Vec4 rightOne);
 
 	double getX();
 	double getY();

@@ -62,16 +62,6 @@ Vec4 Vec4::operator/(double divisor) {
 	return quotient;
 }
 
-//bool Vec4::operator==(Vec4 secondOne) {
-//	bool isEqual{ true };
-//
-//	if (x != secondOne.x || y != secondOne.y || z != secondOne.z || w != secondOne.w) {
-//		isEqual = false;
-//	}
-//	
-//	return isEqual;
-//}
-
 double Vec4::getX() {
 	return x;
 }
@@ -96,4 +86,14 @@ bool operator == (const Vec4 leftOne, const Vec4 rightOne) {
 		}
 		
 		return isEqual;
+}
+
+bool operator!=(const Vec4 leftOne, const Vec4 rightOne) {
+	bool isUnequal{ false };
+
+	if (leftOne.x != rightOne.x || leftOne.y != rightOne.y || leftOne.z != rightOne.z || leftOne.w != rightOne.w) {
+		isUnequal = true;
+	}
+
+	return isUnequal;
 }
