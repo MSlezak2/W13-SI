@@ -62,6 +62,33 @@ Vec4 Vec4::operator/(double divisor) {
 	return quotient;
 }
 
+double Vec4::dot(Vec4 multiplicant) {
+	return x * multiplicant.x + y* multiplicant.y + z* multiplicant.z + w* multiplicant.w;
+}
+
+double Vec4::operator[](int index) {
+	double value;
+
+	switch (index) {
+	case 0:
+		value = x;
+		break;
+	case 1:
+		value = y;
+		break;
+	case 2:
+		value = z;
+		break;
+	case 3:
+		value = w;
+		break;
+	default:
+		value = 1000000;
+		break;
+	}
+	return value;
+}
+
 double Vec4::getX() {
 	return x;
 }
@@ -76,6 +103,39 @@ double Vec4::getZ() {
 
 double Vec4::getW() {
 	return w;
+}
+
+void Vec4::setX(double x) {
+	this->x = x;
+}
+
+void Vec4::setY(double y) {
+	this->y = y;
+}
+
+void Vec4::setZ(double z) {
+	this->z = z;
+}
+
+void Vec4::setW(double w) {
+	this->w = w;
+}
+
+void Vec4::setValue(int index, double value) {
+	switch (index) {
+	case 0:
+		x = value;
+		break;
+	case 1:
+		y = value;
+		break;
+	case 2:
+		z = value;
+		break;
+	case 3:
+		w = value;
+		break;
+	}
 }
 
 bool operator == (const Vec4 leftOne, const Vec4 rightOne) {
