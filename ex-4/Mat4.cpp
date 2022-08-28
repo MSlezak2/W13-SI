@@ -28,7 +28,7 @@ double Mat4::at(int x, int y) {
 	return value;
 }
 
-Mat4 Mat4::generateMatrix(MatrixType matrixType) {
+Mat4& Mat4::generateMatrix(MatrixType matrixType) {
 	Mat4 identityMatrix;
 	
 	if (matrixType == MatrixType::identity) {
@@ -41,7 +41,7 @@ Mat4 Mat4::generateMatrix(MatrixType matrixType) {
 	return identityMatrix;
 }
 
-Mat4 Mat4::generateMatrix(MatrixType matrixType, double sx, double sy, double sz) {
+Mat4& Mat4::generateMatrix(MatrixType matrixType, double sx, double sy, double sz) {
 	Mat4 scalingMatrix;
 
 	if (matrixType == MatrixType::scaling) {
@@ -67,4 +67,35 @@ Vec4 Mat4::operator*(Vec4 multiplicand) {
 	}
 	
 	return result;
+}
+
+//double* Mat4::operator[](int index) {
+//	double* row = nullptr;
+//
+//	if (index >= 0 && index < 4) {
+//		row = matrix[index];
+//	}
+//
+//	return row;
+//}
+
+bool operator==(const Mat4 leftOne, const Mat4 rightOne) {
+	bool isEqual{ true };
+
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+			if (leftOne.matrix[i][j] != rightOne.matrix[i][j]) {
+				isEqual = false;
+			}
+			/*if (leftOne[i][j] != rightOne[i][j]) {
+				isEqual = false;
+			}*/
+		}
+	}
+	
+	return isEqual;
+}
+
+bool operator!=(const Mat4 leftOne, const Mat4 rightOne) {
+	return !(leftOne == rightOne);
 }
