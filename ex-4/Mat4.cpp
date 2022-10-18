@@ -1,4 +1,5 @@
 #include "Mat4.h"
+#include <memory>
 
 Mat4::Mat4() {
 	for (int i = 0; i < 4; i++) {
@@ -16,13 +17,14 @@ void Mat4::insert(int x, int y, double value) {
 
 }
 
-double Mat4::at(int x, int y) {
+double& Mat4::at(int x, int y) {
+	//Returns -1'000'000'000 if indexes out of range
 	double value;
 
 	if (x >= 0 && y >= 0 && x < 4 && y < 4) {
 		value = matrix[y][x];
 	} else {
-		value = 1000000;
+		value = -1000000000;
 	}
 
 	return value;
@@ -41,14 +43,16 @@ Mat4& Mat4::generateMatrix(MatrixType matrixType) {
 	return identityMatrix;
 }
 
+//TODO: Can I change it to return shared_ptr instead? Or what's the right way to solve this?
 Mat4& Mat4::generateMatrix(MatrixType matrixType, double sx, double sy, double sz) {
-	Mat4 scalingMatrix;
+	/*Mat4 scalingMatrix;*/
+	std::unique_ptr<Mat4> scalingMatrix;
 
 	if (matrixType == MatrixType::scaling) {
-		scalingMatrix.insert(0, 0, sx);
-		scalingMatrix.insert(1, 1, sy);
-		scalingMatrix.insert(2, 2, sz);
-		scalingMatrix.insert(3, 3, 1);
+		scalingMatrix->insert(0, 0, sx);
+		scalingMatrix->insert(1, 1, sy);
+		scalingMatrix->insert(2, 2, sz);
+		scalingMatrix->insert(3, 3, 1);
 	}
 
 	return scalingMatrix;

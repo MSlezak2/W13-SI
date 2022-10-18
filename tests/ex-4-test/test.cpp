@@ -72,8 +72,8 @@ TEST_F(Mat4Test, AtTest) {
 	EXPECT_EQ(regularMatrix.at(1, 1), 1);
 	EXPECT_EQ(regularMatrix.at(2, 2), 2);
 	
-	EXPECT_EQ(regularMatrix.at(-1, 2), 1000000) << "index out of bounds - wrong return value";
-	EXPECT_EQ(regularMatrix.at(0, 6), 1000000) << "index out of bounds - wrong return value";
+	EXPECT_EQ(regularMatrix.at(-1, 2), -1000000000) << "index out of bounds - wrong return value";
+	EXPECT_EQ(regularMatrix.at(0, 6), -1000000000) << "index out of bounds - wrong return value";
 
 	EXPECT_NE(regularMatrix.at(1, 1), 5);
 }

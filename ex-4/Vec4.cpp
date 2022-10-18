@@ -7,29 +7,29 @@ Vec4::Vec4() {
 	w = 0.0;
 }
 
-Vec4 Vec4::operator+(Vec4 subtrahend) {
+Vec4 Vec4::operator+(Vec4 addend) const {
 	Vec4 sum;
 
-	sum.x = x + subtrahend.x;
-	sum.y = y + subtrahend.y;
-	sum.z = z + subtrahend.z;
-	sum.w = w + subtrahend.w;
+	sum.x = x + addend.x;
+	sum.y = y + addend.y;
+	sum.z = z + addend.z;
+	sum.w = w + addend.w;
 
 	return sum;
 }
 
-Vec4 Vec4::operator-(Vec4 addend) {
+Vec4 Vec4::operator-(Vec4 subtrahend) const {
 	Vec4 difference;
 
-	difference.x = x - addend.x;
-	difference.y = y - addend.y;
-	difference.z = z - addend.z;
-	difference.w = w - addend.w;
+	difference.x = x - subtrahend.x;
+	difference.y = y - subtrahend.y;
+	difference.z = z - subtrahend.z;
+	difference.w = w - subtrahend.w;
 
 	return difference;
 }
 
-Vec4 operator * (Vec4 multiplier, double multiplicand) {
+Vec4 operator * (Vec4 multiplier, double multiplicand){
 	Vec4 product;
 
 	product.x = multiplier.x * multiplicand;
@@ -40,7 +40,7 @@ Vec4 operator * (Vec4 multiplier, double multiplicand) {
 	return product;
 }
 
-Vec4 operator * (double multiplier, Vec4 multiplicand) {
+Vec4 operator * (double multiplier, Vec4 multiplicand){
 	Vec4 product;
 
 	product.x = multiplier * multiplicand.x;
@@ -51,7 +51,7 @@ Vec4 operator * (double multiplier, Vec4 multiplicand) {
 	return product;
 }
 
-Vec4 Vec4::operator/(double divisor) {
+Vec4 Vec4::operator/(double divisor) const {
 	Vec4 quotient;
 
 	quotient.x = x / divisor;
@@ -62,7 +62,7 @@ Vec4 Vec4::operator/(double divisor) {
 	return quotient;
 }
 
-double Vec4::dot(Vec4 multiplicant) {
+double Vec4::dot(Vec4 multiplicant) const {
 	return x * multiplicant.x + y* multiplicant.y + z* multiplicant.z + w* multiplicant.w;
 }
 

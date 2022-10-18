@@ -1,16 +1,17 @@
 #pragma once
+
 class Vec4 {
 public:
 	Vec4();
 	Vec4(double x, double y, double z, double w) : x{ x }, y{ y }, z{ z }, w{ w } {};
 
-	Vec4 operator + (Vec4 addend);
-	Vec4 operator - (Vec4 subtrahend);
+	Vec4 operator + (Vec4 addend) const;
+	Vec4 operator - (Vec4 subtrahend) const;
 	friend Vec4 operator * (Vec4 multiplier, double multiplicand);
 	friend Vec4 operator * (double multiplier, Vec4 multiplicand);
-	Vec4 operator / (double divisor);
-	double dot(Vec4 multiplicant);
-	Vec4 cross(Vec4 multiplicant); //TODO: Implement it
+	Vec4 operator / (double divisor) const;
+	double dot(Vec4 multiplicant) const;
+	Vec4 cross(Vec4 multiplicant) const; //TODO: Implement it
 
 	friend bool operator == (const Vec4 leftOne, const Vec4 rightOne);
 	friend bool operator != (const Vec4 leftOne, const Vec4 rightOne);

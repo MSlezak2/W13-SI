@@ -8,7 +8,7 @@ public:
 
 	Mat4();
 	void insert(int x, int y, double value);
-	double at(int x, int y);
+	double& at(int x, int y); //TODO: What does it mean to return reference to double?
 	static Mat4& generateMatrix(MatrixType matrixType);
 	static Mat4& generateMatrix(MatrixType matrixType, double sx, double sy, double sz);
 	Vec4 operator * (Vec4 multiplicand);
